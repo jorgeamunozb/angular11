@@ -3,6 +3,11 @@
     src: url("fonts/yanone.ttf");
 }
 
+@font-face {
+    font-family: "finger";
+    src: url("https://fonts.gstatic.com/s/fingerpaint/v10/0QInMXVJ-o-oRn_7dron8YW-9JzT.woff2");
+}
+
 * {
     margin: 0px;
     padding: 0px;
@@ -27,16 +32,17 @@ header {
 
 header ul {
     display: block;
-    width: 38%;
+    width: 100%;
     height: inherit;
     margin: 0px auto;
+    margin-top: -4px;
 }
 
 header ul li {
     display: inline-block;
     margin: 0px auto;
     text-align: center;
-    line-height: 90px;
+    line-height: 88px;
 }
 
 header a {
@@ -53,6 +59,10 @@ header a:hover {
     background: rgba(0, 0, 0, 0.8);
 }
 
+.actived {
+    background: rgba(36, 46, 77, 0.5);
+}
+
 header #logo a:hover {
     background: transparent;
 }
@@ -60,4 +70,90 @@ header #logo a:hover {
 .crearfix {
     float: none;
     clear: both;
+}
+
+
+/*Logotipo*/
+
+#logo {
+    font-family: "finger";
+    font-size: 30px;
+}
+
+#logo a {
+    transition: color 500ms, transform 500ms;
+}
+
+#logo a:hover {
+    background: transparent;
+    color: black;
+    transform: scale(1.50, 1.50);
+}
+
+
+/*Contenedor principal*/
+
+#content {
+    min-height: 420px;
+    width: 75%;
+    margin: 0px auto;
+    box-shadow: 0px 0px 40px rgba(20, 39, 63, 0.685);
+    background: rgba(255, 255, 255, 0.7);
+    padding-top: 120px;
+    border-left: 1px solid #b7b7b7;
+    border-right: 1px solid #b7b7b7;
+}
+
+
+/*Pie de página*/
+
+footer {
+    width: 75%;
+    margin: 0px auto;
+    padding-top: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+
+/*Sobre mí*/
+
+#title {
+    width: 70%;
+    margin: 0px auto;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#title h1 {
+    font-family: "finger";
+    font-size: 60px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+#title h2 {
+    font-size: 25px;
+    color: gray;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+article.about {
+    width: 70%;
+    margin: 0px auto;
+    margin-bottom: 20px;
+    font-size: 23px;
+}
+
+.about h2 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.about p {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    text-align: justify;
 }
