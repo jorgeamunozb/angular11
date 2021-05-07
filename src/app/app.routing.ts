@@ -1,11 +1,11 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { CreateComponent } from './components/create/create.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { ErrorComponent } from './components/error/error.component';
+import { AboutComponent } from './component/about/about.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { CreateComponent } from './component/create/create.component';
+import { ProjectsComponent } from './component/projects/projects.component';
+import { ErrorComponent } from './component/error/error.component';
 
 const appRoutes: Routes = [
     { path: '', component: AboutComponent },
