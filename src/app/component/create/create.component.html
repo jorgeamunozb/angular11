@@ -1,12 +1,20 @@
-<div class="container">
+<div class="container" *ngIf="project">
     <h2>{{title}}</h2>
 
     <div class="message success" *ngIf="status === 'success'">
-        El proyecto se ha creado correctamente, puedes <a href="#">verlo aquí.</a>
+        El proyecto se ha creado correctamente, puedes <a [routerLink]="['/detalle', projectCreatedId]">verlo aquí.</a>
     </div>
 
     <div class="message failed" *ngIf="status === 'failed'">
         El proyecto no se ha podido crear.
+    </div>
+
+    <div class="message success" *ngIf="status === 'success-edited'">
+        El proyecto se ha editado correctamente.
+    </div>
+
+    <div class="message failed" *ngIf="status === 'failed-edited'">
+        El proyecto no se ha podido editar.
     </div>
 
     <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
@@ -50,7 +58,11 @@
 
         <p>
             <label for="image">Imagen del proyecto</label>
-            <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)" />
+            <span class="image" *ngIf="project.image" style="float: none; background: none;">
+                <img src="{{url + 'get-image/' + project.image}}" style="width: 100px"/>
+            </span>
+            <br/>
+            <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent(project._id, $event)" />
         </p>
 
         <input type="submit" value="Enviar" [disabled]="!projectForm.form.valid" />

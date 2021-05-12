@@ -12,9 +12,9 @@ export class AboutComponent implements OnInit {
   public email: string;
 
   constructor() {
-    this.title = "Jorge Muñoz";
-    this.subtitle = "Web Developer";
-    this.email = "jorgedev@yopmail.com";
+    this.title = 'Jorge Muñoz';
+    this.subtitle = 'Web Developer';
+    this.email = 'jorgedev@yopmail.com';
   }
 
   ngOnInit(): void {

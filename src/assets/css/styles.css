@@ -94,7 +94,8 @@ header #logo a:hover {
 /*Contenedor principal*/
 
 #content {
-    min-height: 420px;
+    min-height: 550px;
+    height: auto;
     width: 75%;
     margin: 0px auto;
     box-shadow: 0px 0px 40px rgba(20, 39, 63, 0.685);
@@ -102,6 +103,7 @@ header #logo a:hover {
     padding-top: 120px;
     border-left: 1px solid #b7b7b7;
     border-right: 1px solid #b7b7b7;
+    overflow: auto;
 }
 
 
@@ -166,6 +168,21 @@ article.about {
     padding-top: 10px;
 }
 
+.container .image {
+    float: left;
+    width: 49%;
+}
+
+.container .image img {
+    width: 100%;
+}
+
+.container .data {
+    float: left;
+    width: 47%;
+    margin-left: 30px;
+}
+
 .container h2 {
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
@@ -191,7 +208,9 @@ form textarea {
     padding: 5px;
 }
 
-form input[type="submit"] {
+form input[type="submit"],
+.button-edit,
+.button-delete {
     display: block;
     font-size: 17px;
     padding: 10px;
@@ -200,6 +219,31 @@ form input[type="submit"] {
     background: rgba(53, 103, 164, 1);
     border: 1px solid rgba(13, 67, 133, 1);
     cursor: pointer;
+}
+
+.button-edit,
+.button-delete {
+    width: 20%;
+    float: left;
+    margin-right: 10px;
+    text-decoration: none;
+    border: none;
+}
+
+.button-edit {
+    background: orange;
+}
+
+.button-delete {
+    background: red;
+}
+
+.confirmation-delete {
+    margin-top: 13px;
+    display: flex;
+    align-items: flex-end;
+    background: #fff;
+    padding: 10px;
 }
 
 form input[type="submit"]:hover {
@@ -239,4 +283,46 @@ form span {
 .failed {
     background: red;
     color: white;
+}
+
+
+/*Página de proyectos*/
+
+.project {
+    list-style: none;
+    display: block;
+    float: left;
+    width: 27%;
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    border: groove 2px rgba(53, 103, 164, 0);
+    border-radius: 10px;
+}
+
+.project:hover {
+    border: groove 2px rgba(53, 103, 164, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px rgba(20, 39, 63, 0.685);
+}
+
+.project .image {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.project img {
+    width: 100%;
+}
+
+.project h3 {
+    margin-top: 6px;
+}
+
+.project a {
+    text-decoration: none;
+    color: black;
 }

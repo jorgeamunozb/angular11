@@ -15,12 +15,13 @@ export class CreateComponent implements OnInit {
   public project: Project;
   public status: string;
   public filesToUpload: Array<File>;
+  public projectCreatedId: string;
 
   constructor(
-    private _projectService: ProjectService,
-    private _uploadService: UploadService
+    private projectService: ProjectService,
+    private uploadService: UploadService
   ) {
-    this.title = "Crear proyecto";
+    this.title = 'Crear proyecto';
     this.project = new Project('', '', '', '', 2020, '', '');
   }
 
@@ -28,28 +29,30 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit(projectForm: any): void {
-    this._projectService.saveProject(this.project)
+    this.projectService.saveProject(this.project)
       .subscribe(response => {
-        const project: Project = response["project"];
+        const key = 'project';
+        const project: Project = response[key];
 
         if (project && this.filesToUpload) {
-          this._uploadService.makeFileRequest(project._id, this.filesToUpload)
-            .then((result: Project) => {
-              this.status = "success";
+          this.uploadService.makeFileRequest(project._id, this.filesToUpload)
+            .then((result: any) => {
+              this.projectCreatedId = result.project._id;
+              this.status = 'success';
               projectForm.reset();
             });
         } else {
-          this.status = "failed";
+          this.status = 'failed';
         }
       },
         error => {
-          console.log(<any>error);
+          console.log(error);
         }
       );
-  };
+  }
 
-  fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
+  fileChangeEvent(fileInput: any): void {
+    this.filesToUpload = <Array<File>> fileInput.target.files;
   }
 
 
