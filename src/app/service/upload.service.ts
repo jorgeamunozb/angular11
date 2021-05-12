@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { Global } from './global';
 
 @Injectable()
 export class UploadService {
 
-    makeFileRequest(projectId: string, files: Array<File>): Promise<Object> {
-        return new Promise(function (resolve, reject) {
-            var formData: any = new FormData();
-            var xhr = new XMLHttpRequest();
+    makeFileRequest(projectId: string, files: Array<File>): Promise<object> {
+        return new Promise((resolve, reject) => {
+            const formData = new FormData();
+            const xhr = new XMLHttpRequest();
 
-            for (var i = 0; i < files.length; i++) {
-                formData.append("image", files[i], files[i].name);
+            for (const row of files) {
+                formData.append('image', row, row.name);
             }
 
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         resolve(JSON.parse(xhr.response));
@@ -21,11 +22,11 @@ export class UploadService {
                         reject(xhr.response);
                     }
                 }
-            }
+            };
 
             xhr.open('POST', Global.url + 'upload-image/' + projectId, true);
             xhr.send(formData);
         });
-    };
+    }
 
-};
+}

@@ -8,35 +8,35 @@ import { Global } from './global';
 export class ProjectService {
     public url: string;
 
-    constructor(private _http: HttpClient) {
+    constructor(private http: HttpClient) {
         this.url = Global.url;
     }
 
-    saveProject(project: Project): Observable<Object> {
-        let params = JSON.stringify(project);
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(`${this.url}save-project`, params, { headers });
+    saveProject(project: Project): Observable<object> {
+        const params = JSON.stringify(project);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this.http.post(`${this.url}save-project`, params, { headers });
     }
 
-    getProjects(): Observable<Object> {
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.get(`${this.url}projects`, { headers });
+    getProjects(): Observable<object> {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this.http.get(`${this.url}projects`, { headers });
     }
 
-    getProject(id: string): Observable<Object> {
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.get(`${this.url}project/${id}`, { headers });
+    getProject(id: string): Observable<object> {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this.http.get(`${this.url}project/${id}`, { headers });
     }
 
-    deleteProject(id: string): Observable<Object> {
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.delete(`${this.url}delete-project/${id}`, { headers });
+    deleteProject(id: string): Observable<object> {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this.http.delete(`${this.url}delete-project/${id}`, { headers });
     }
 
-    editProject(project: Project): Observable<Object> {
-        let params = JSON.stringify(project);
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.put(`${this.url}update-project/${project._id}`, params, { headers });
+    editProject(project: Project): Observable<object> {
+        const params = JSON.stringify(project);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this.http.put(`${this.url}update-project/${project.id}`, params, { headers });
     }
 
 }

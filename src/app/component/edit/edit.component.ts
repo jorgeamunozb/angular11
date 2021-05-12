@@ -18,58 +18,57 @@ export class EditComponent implements OnInit {
   public status: string;
   public url: string;
   public filesToUpload: Array<File>;
+  private keyProject = 'project';
 
   constructor(
-    private _projectService: ProjectService,
-    private _uploadService: UploadService,
-    private _route: ActivatedRoute
+    private projectService: ProjectService,
+    private uploadService: UploadService,
+    private route: ActivatedRoute
   ) {
     this.url = Global.url;
-    this.title = "Editar proyecto";
+    this.title = 'Editar proyecto';
   }
 
   ngOnInit(): void {
-    this._route.params.subscribe(
+    this.route.params.subscribe(
       response => {
-        let id = response.id;
-
-        this.getProject(id);
+        this.getProject(response.id);
       }
     );
-  };
+  }
 
   getProject(id: string): void {
-    this._projectService.getProject(id).subscribe(
+    this.projectService.getProject(id).subscribe(
       response => {
-        this.project = response["project"];
+        this.project = response[this.keyProject];
       },
       error => {
-        console.log(<any>error);
+        console.log(error);
       }
     );
-  };
+  }
 
   onSubmit(): void {
-    this._projectService.editProject(this.project).subscribe(
+    this.projectService.editProject(this.project).subscribe(
       response => {
-        this.project = response["project"];
-        this.status = "success-edited";
+        this.project = response[this.keyProject];
+        this.status = 'success-edited';
       },
       error => {
-        this.status = "failed-edited";
-        console.log(<any>error);
+        this.status = 'failed-edited';
+        console.log(error);
       }
     );
-  };
+  }
 
   fileChangeEvent(projectId: string, fileInput: any): void {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
+    this.filesToUpload = fileInput.target.files as Array<File>;
     if (this.project && this.filesToUpload) {
-      this._uploadService.makeFileRequest(projectId, this.filesToUpload)
+      this.uploadService.makeFileRequest(projectId, this.filesToUpload)
         .then((result: any) => {
-          this.project = result["project"];
+          this.project = result[this.keyProject];
         });
     }
-  };
+  }
 
 }

@@ -8,14 +8,14 @@
         <p>{{project.category}}</p>
         <p>{{project.langs}}</p>
         <p *ngIf="!willYouDelete">
-            <button [routerLink]="['/editar', project._id]" class="button-edit">Editar</button>
+            <button [routerLink]="['/editar', project.id]" class="button-edit">Editar</button>
             <button (click)="onDelete()" class="button-delete">Eliminar</button>
         </p>
 
         <p class="confirmation-delete" *ngIf="willYouDelete">
             <span>¿Seguro desea eliminar este proyecto?</span>
             <button (click)="onCancelDelete()" class="button-edit">No</button>
-            <button (click)="onConfirmDelete(project._id)" class="button-delete">Si</button>
+            <button (click)="onConfirmDelete(project.id)" class="button-delete">Si</button>
         </p>
     </div>
 </div>

@@ -13,9 +13,10 @@ export class ProjectsComponent implements OnInit {
 
   public projects: Project[];
   public url: string;
+  private keyProjects = 'projects';
 
   constructor(
-    private _projectService: ProjectService
+    private projectService: ProjectService
   ) {
     this.url = Global.url;
   }
@@ -25,14 +26,14 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjects(): void {
-    this._projectService.getProjects().subscribe(
+    this.projectService.getProjects().subscribe(
       response => {
-        this.projects = response['projects'];
+        this.projects = response[this.keyProjects];
       },
       error => {
-        console.log(<any>error);
+        console.log(error);
       }
-    )
+    );
   }
 
 }

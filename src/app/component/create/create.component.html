@@ -62,7 +62,7 @@
                 <img src="{{url + 'get-image/' + project.image}}" style="width: 100px"/>
             </span>
             <br/>
-            <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent(project._id, $event)" />
+            <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent(project.id, $event)" />
         </p>
 
         <input type="submit" value="Enviar" [disabled]="!projectForm.form.valid" />

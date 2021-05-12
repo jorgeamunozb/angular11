@@ -35,9 +35,9 @@ export class CreateComponent implements OnInit {
         const project: Project = response[key];
 
         if (project && this.filesToUpload) {
-          this.uploadService.makeFileRequest(project._id, this.filesToUpload)
+          this.uploadService.makeFileRequest(project.id, this.filesToUpload)
             .then((result: any) => {
-              this.projectCreatedId = result.project._id;
+              this.projectCreatedId = result.project.id;
               this.status = 'success';
               projectForm.reset();
             });
@@ -52,7 +52,8 @@ export class CreateComponent implements OnInit {
   }
 
   fileChangeEvent(fileInput: any): void {
-    this.filesToUpload = <Array<File>> fileInput.target.files;
+    // this.filesToUpload = <Array<File>> fileInput.target.files;
+    this.filesToUpload = fileInput.target.files as Array<File>;
   }
 
 
