@@ -62,7 +62,7 @@ export class EditComponent implements OnInit {
   }
 
   fileChangeEvent(projectId: string, fileInput: any): void {
-    this.filesToUpload = <Array<File>> fileInput.target.files;
+    this.filesToUpload = fileInput.target.files as Array<File>;
     if (this.project && this.filesToUpload) {
       this.uploadService.makeFileRequest(projectId, this.filesToUpload)
         .then((result: any) => {

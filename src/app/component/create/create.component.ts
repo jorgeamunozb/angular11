@@ -30,6 +30,7 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+        throw new Error('Method not implemented.');
   }
 
   onSubmit(projectForm: any): void {
@@ -54,7 +55,7 @@ export class CreateComponent implements OnInit {
   }
 
   fileChangeEvent(projectId: string, fileInput: any): void {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
+    this.filesToUpload = fileInput.target.files as Array<File>;
     if (this.filesToUpload) {
       this.uploadService.makeFileRequest(projectId, this.filesToUpload)
         .then(

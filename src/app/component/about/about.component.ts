@@ -16,8 +16,9 @@ export class AboutComponent implements OnInit {
     this.subtitle = 'Web Developer';
     this.email = 'jorgedev@yopmail.com';
   }
-
+  
   ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
 }
