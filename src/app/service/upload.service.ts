@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
 import { Global } from './global';
 
 @Injectable()
@@ -24,7 +23,8 @@ export class UploadService {
                 }
             };
 
-            xhr.open('POST', Global.url + 'upload-image/' + projectId, true);
+            const uri = projectId ? 'upload-image/' : 'upload-image';
+            xhr.open('POST', `${Global.url}${uri}${projectId}`, true);
             xhr.send(formData);
         });
     }

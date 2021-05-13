@@ -13,9 +13,13 @@ export class ProjectService {
     }
 
     saveProject(project: Project): Observable<object> {
-        const params = JSON.stringify(project);
-        const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this.http.post(`${this.url}save-project`, params, { headers });
+        if (project) {
+            return this.editProject(project);
+        } else {
+            const params = JSON.stringify(project);
+            const headers = new HttpHeaders().set('Content-Type', 'application/json');
+            return this.http.post(`${this.url}save-project`, params, { headers });
+        }
     }
 
     getProjects(): Observable<object> {
